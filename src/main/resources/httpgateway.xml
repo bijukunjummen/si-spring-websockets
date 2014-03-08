@@ -14,10 +14,7 @@
 		<int:poller fixed-delay="60000"></int:poller>
 	</int:inbound-channel-adapter>
 	
-	<int:channel id="quakeinfo">
-	</int:channel>
-
-	<int:channel id="quakeinfoobject"/>
+	<int:channel id="quakeinfo"/>
 
 	<int:channel id="quakeinfotrigger"></int:channel>
 
@@ -27,24 +24,9 @@
 	    http-method="GET"
 	    expected-response-type="java.lang.String"
 	    charset="UTF-8"
-	    reply-timeout="5000"
 	    reply-channel="quakeinfo">
 	</int-http:outbound-gateway>
 
-	<int-amqp:outbound-channel-adapter amqp-template="amqpTemplate" channel="quakeinfo">
+	<int-amqp:outbound-channel-adapter amqp-template="amqpTemplate" channel="quakeinfo" />
 
-	</int-amqp:outbound-channel-adapter>
-
-	<!--
-	<int:json-to-object-transformer 
-			input-channel="quakeinfo" type="standalone.domain.QuakeCollection" 
-			output-channel="quakeinfoobject" object-mapper="objectMapper">
-		<int:poller fixed-delay="5000" ></int:poller>
-	</int:json-to-object-transformer>
-	
-	<int:logging-channel-adapter id="messageLogger" log-full-message="true" channel="quakeinfoobject" level="ERROR">
-	</int:logging-channel-adapter>
-	
-	<bean class="standalone.config.ObjectMapperFactoryBean" name="objectMapper"/>
-	-->
 </beans>

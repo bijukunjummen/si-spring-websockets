@@ -25,17 +25,4 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		registry.addEndpoint("/quakesep").withSockJS();
 	}
-
-	@Override
-	public void configureClientInboundChannel(ChannelRegistration channelRegistration) {
-	}
-
-	@Override
-	public void configureClientOutboundChannel(ChannelRegistration channelRegistration) {
-	}
-
-	@Override
-	public boolean configureMessageConverters(List<MessageConverter> messageConverters) {
-		return true;
-	}
 }
